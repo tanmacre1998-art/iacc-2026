@@ -111,3 +111,20 @@ programa. Word (2016 o posterior), PowerPoint, Canva e Inkscape aceptan SVG dire
 para LaTeX conviene el PNG o convertir el SVG a PDF con Inkscape.
 
 Colores: rojo `#C9151E`, amarillo `#F4D300`, negro `#1A1A1A`, blanco. Tipografía: STIX Two Text.
+
+## Cartas membreteadas
+
+En `membrete/` está el papel membreteado en LaTeX (se compila con pdflatex; MiKTeX ya lo tiene todo):
+
+- `membrete.sty`: cabecera con el isologo (dibujado en TikZ, vectorial) y el escudo de la
+  Universidad, pie con el sello de los 15 años y el sitio web, y los comandos de carta.
+- `carta-invitacion.tex`: carta modelo para conferencistas. Para cada invitado, copia el
+  archivo, cambia el bloque "DATOS DE ESTA CARTA" (fecha, tratamiento, nombre, cargo,
+  institución, apellido, tipo de charla), ajusta el cuerpo si hace falta y compila:
+
+```bash
+pdflatex carta-invitacion.tex
+```
+
+Cuando exista el correo oficial, ponlo en `membrete.sty` (`\correo{...}`) y aparecerá en el pie.
+Si en el comité prefieren Word, se puede hacer una versión .docx con el mismo diseño.

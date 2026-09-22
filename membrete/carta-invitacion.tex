@@ -1,0 +1,55 @@
+% ============================================================
+%  Carta de invitación · II Encuentro IACC
+%  Compilar con pdflatex (dos veces si cambia el pie de página).
+%  Copia este archivo para cada persona invitada y edita solo
+%  el bloque "DATOS DE ESTA CARTA" y el cuerpo.
+% ============================================================
+\documentclass[11pt]{article}
+\usepackage{membrete}
+
+% ---------- DATOS DE ESTA CARTA ----------
+\newcommand{\fecha}{Bogotá D.C., 1 de octubre de 2026}
+\newcommand{\tratamiento}{Profesor}                  % Profesor / Profesora / Doctor / Doctora
+\newcommand{\nombre}{Agustín Moreno Cañadas}
+\newcommand{\cargo}{Profesor asociado, Departamento de Matemáticas}
+\newcommand{\institucion}{Universidad Nacional de Colombia}
+\newcommand{\apellido}{Moreno}                        % para el saludo
+\newcommand{\charla}{conferencia plenaria}            % conferencia plenaria / cursillo / charla
+
+\begin{document}
+
+\fechacarta{\fecha}
+
+\destinatario{\tratamiento}{\nombre}{\cargo}{\institucion}
+
+\asunto{Invitación como conferencista al II Encuentro Interacciones entre Álgebra, Combinatoria y la Computación}
+
+\saludo{Apreciado profesor \apellido:}
+
+El Proyecto Curricular de Matemáticas de la \universidad\ y el \semillero\
+tienen el gusto de invitarlo a participar como conferencista en el
+\textbf{Segundo Encuentro Interacciones entre Álgebra, Combinatoria y la Computación},
+que se realizará en Bogotá los días \textbf{\fechasencuentro}.
+
+El encuentro reúne a estudiantes, profesores e investigadores de varias universidades del
+país alrededor de las fronteras entre el álgebra, la combinatoria y la computación, y da
+continuidad a la primera edición realizada en mayo de 2024. En esta ocasión celebramos
+además los quince años del semillero ITENUA, reconocido por la Universidad Distrital en
+septiembre de 2011.
+
+Nos honraría contar con una \charla\ suya, de aproximadamente una hora, sobre el tema que
+considere más apropiado dentro de estas áreas. Los gastos de desplazamiento y estadía
+serán cubiertos por la organización del encuentro. Le agradeceríamos confirmar su
+participación, y el título tentativo de su intervención, antes del 30 de octubre de 2026.
+
+La información del encuentro se encuentra en \href{\sitioweb}{\sitioweb}.
+
+Agradecemos de antemano su atención y quedamos atentos a su respuesta.
+
+Cordialmente,
+
+\vspace{1em}
+\firma{Verónica Cifuentes Vargas, PhD}{Comité organizador}{\universidad}
+\firma{Gabriel Bravo Ríos, PhD}{Comité organizador}{\universidad}
+
+\end{document}

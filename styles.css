@@ -335,3 +335,25 @@ p { margin: 0 0 1em; }
 /* Enlaces sin destino todavía (se rellenan desde config.js) */
 a.is-disabled { color: var(--slate); text-decoration-style: dotted; pointer-events: none; }
 .btn.is-disabled { border-color: var(--mist); color: var(--slate); }
+
+/* Historia de ITENUA: línea de tiempo vertical por generaciones */
+.history {
+  list-style: none; padding: 0; margin: 3.5rem 0 0;
+  max-width: 760px;
+  border-left: 2px solid var(--mist);
+}
+.history li { position: relative; padding: 0 0 1.6rem 32px; }
+.history li::before {
+  content: ""; position: absolute; left: -7px; top: 0.45rem;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--paper); border: 2px solid var(--slate);
+}
+.history time { font-family: var(--serif); font-size: 1.5rem; line-height: 1.2; display: block; margin-bottom: 0.2rem; }
+.history p { margin: 0; font-size: 1rem; max-width: 62ch; }
+.history .current::before { background: var(--rojo); border-color: var(--rojo); }
+.history .gen { padding-top: 0.4rem; padding-bottom: 1.2rem; margin-top: 0.5rem; }
+.history .gen::before { left: -9px; top: 0.75rem; width: 16px; height: 16px; background: var(--amarillo); border-color: var(--amarillo); }
+.history .gen span { font-family: var(--serif); font-size: 1.25rem; display: block; }
+.history .gen em { font-style: italic; color: var(--slate); font-family: var(--serif); }
+.history .gap::before { border-style: dashed; }
+.history .gap p { color: var(--slate); font-style: italic; }
