@@ -1,55 +1,62 @@
 % ============================================================
-%  membrete.sty — papel membreteado del II Encuentro IACC
+%  membrete.sty — papel membreteado oficial del Programa Académico
+%  de Matemáticas (FCMN, Universidad Distrital) con la marca del
+%  II Encuentro IACC integrada.
 %
-%  Uso:  \usepackage{membrete}   (compilar con pdflatex)
-%  Define la cabecera (isologo del encuentro + escudo de la UD),
-%  el pie de página y los comandos para redactar cartas.
-%  Los datos que cambian de carta en carta se ponen en el .tex.
+%  Compilar con LuaLaTeX (dos veces la primera vez):
+%      lualatex carta-invitacion.tex
+%  Usa la tipografía Cambria del sistema para el membrete oficial
+%  y STIX Two Text para el cuerpo y la marca.
+%
+%  Reproduce la plantilla MATEMATICAS_FCMN.dot: mismos márgenes,
+%  cabecera (escudo + facultad + programa) y pie (PBX, dirección,
+%  acreditación, línea de atención, correo). La marca del encuentro
+%  va a la derecha de la cabecera, con el sello de los 15 años de ITENUA.
 % ============================================================
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{membrete}[2026/09/22 Papel membreteado II Encuentro IACC]
+\ProvidesPackage{membrete}[2026/09/22 Membrete oficial FCMN + II Encuentro IACC]
 
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
+\RequirePackage{fontspec}
 \RequirePackage[spanish,es-noshorthands]{babel}
-\RequirePackage{stix2}                 % tipografía de la marca
-\RequirePackage[letterpaper,top=4.8cm,bottom=3cm,left=2.6cm,right=2.6cm,headheight=3.4cm,headsep=0.8cm]{geometry}
+\RequirePackage[letterpaper,top=4.5cm,bottom=4.4cm,left=3cm,right=2cm]{geometry}
 \RequirePackage{graphicx}
 \RequirePackage{xcolor}
 \RequirePackage{tikz}
-\usetikzlibrary{fadings}
-\RequirePackage{fancyhdr}
+\usetikzlibrary{calc}
 \RequirePackage{microtype}
 \RequirePackage{parskip}
 \RequirePackage{hyperref}
-\hypersetup{colorlinks=true, urlcolor=iaccrojo, linkcolor=iaccnegro, pdfauthor={II Encuentro IACC}}
+
+% ---------- Tipografías ----------
+\setmainfont{STIXTwoText}[
+  Extension=.otf, UprightFont=*-Regular, ItalicFont=*-Italic,
+  BoldFont=*-Bold, BoldItalicFont=*-BoldItalic]
+\newfontfamily\cambria{Cambria}[BoldFont={Cambria Bold}, ItalicFont={Cambria Italic}, Ligatures=TeX]      % tipografía del membrete oficial
 
 % ---------- Paleta ----------
 \definecolor{iaccrojo}{HTML}{C9151E}
 \definecolor{iaccamarillo}{HTML}{F4D300}
 \definecolor{iaccnegro}{HTML}{1A1A1A}
 \definecolor{iaccgris}{HTML}{73777F}
-\definecolor{iaccmist}{HTML}{E9EAED}
 \color{iaccnegro}
+\hypersetup{colorlinks=true, urlcolor=iaccnegro, linkcolor=iaccnegro, pdfauthor={Programa Académico de Matemáticas, Universidad Distrital}}
 
-% ---------- Difuminados de la marca ----------
-\tikzfading[name=iaccfadeE, left color=transparent!0, right color=transparent!94]
-\tikzfading[name=iaccfadeW, left color=transparent!94, right color=transparent!0]
+% Los difuminados se hacen con sombreado hacia blanco (no con transparencia)
+% para que se vean igual en cualquier visor de PDF.
 
-% ---------- Isologo (mismas proporciones que marca.js) ----------
-% #1 = ancho total en cm, por ejemplo \isologo{9}
+% ---------- Isologo (mismas proporciones que marca.js). #1 = ancho en cm ----------
 \newcommand{\isologo}[1]{%
   \begin{tikzpicture}[baseline=(base)]
     \pgfmathsetmacro{\s}{#1/6.214}
     \begin{scope}[scale=\s, transform shape, line cap=round]
       \coordinate (base) at (0,0);
-      \fill[iaccamarillo, path fading=iaccfadeE] (0,0) -- (1,0) -- (0.5,0.866) -- cycle;
-      \fill[iaccrojo, path fading=iaccfadeW] (5.214,0.866) -- (6.214,0.866) -- (5.714,0) -- cycle;
+      \shade[left color=iaccamarillo, middle color=iaccamarillo!88!white, right color=iaccamarillo!6!white] (0,0) -- (1,0) -- (0.5,0.866) -- cycle;
+      \shade[left color=iaccrojo!6!white, middle color=iaccrojo!88!white, right color=iaccrojo] (5.214,0.866) -- (6.214,0.866) -- (5.714,0) -- cycle;
       \draw[iaccnegro, line width={\s*0.8pt}] (0.5,0.866) -- (5.214,0.866);
       \draw[iaccnegro, line width={\s*0.8pt}] (1,0) -- (5.714,0);
       \node[anchor=base west, inner sep=0, text=iaccrojo, font=\itshape\fontsize{6.1pt}{0pt}\selectfont] at (0.853,0.625) {II Encuentro};
-      \node[anchor=base west, inner sep=0, font=\fontsize{6.6pt}{0pt}\selectfont] at (1.004,0.364) {Interacciones entre Álgebra,};
-      \node[anchor=base west, inner sep=0, font=\fontsize{6.6pt}{0pt}\selectfont] at (1.154,0.104) {Combinatoria y la Computación};
+      \node[anchor=base west, inner sep=0, text=iaccnegro, font=\fontsize{6.6pt}{0pt}\selectfont] at (1.004,0.364) {Interacciones entre Álgebra,};
+      \node[anchor=base west, inner sep=0, text=iaccnegro, font=\fontsize{6.6pt}{0pt}\selectfont] at (1.154,0.104) {Combinatoria y la Computación};
     \end{scope}
   \end{tikzpicture}%
 }
@@ -60,43 +67,44 @@
     \pgfmathsetmacro{\s}{#1/2.143}
     \begin{scope}[scale=\s]
       \coordinate (base) at (0,0);
-      \fill[iaccamarillo, path fading=iaccfadeE] (0,0) -- (1,0) -- (0.5,0.866) -- cycle;
-      \fill[iaccrojo, path fading=iaccfadeW] (1.143,0.866) -- (2.143,0.866) -- (1.643,0) -- cycle;
+      \shade[left color=iaccamarillo, middle color=iaccamarillo!88!white, right color=iaccamarillo!6!white] (0,0) -- (1,0) -- (0.5,0.866) -- cycle;
+      \shade[left color=iaccrojo!6!white, middle color=iaccrojo!88!white, right color=iaccrojo] (1.143,0.866) -- (2.143,0.866) -- (1.643,0) -- cycle;
     \end{scope}
   \end{tikzpicture}%
 }
 
-% ---------- Datos institucionales (se pueden redefinir en el .tex) ----------
+% ---------- Datos institucionales ----------
 \newcommand{\universidad}{Universidad Distrital Francisco José de Caldas}
 \newcommand{\facultad}{Facultad de Ciencias Matemáticas y Naturales}
-\newcommand{\proyecto}{Proyecto Curricular de Matemáticas}
+\newcommand{\proyecto}{Programa Académico de Matemáticas}
 \newcommand{\semillero}{Semillero de Investigación en Teoría de Números y Álgebra, ITENUA}
 \newcommand{\sitioweb}{https://tanmacre1998-art.github.io/iacc-2026/}
-\newcommand{\correo}{}                       % correo oficial, cuando exista
+\newcommand{\correoprograma}{matematicas@udistrital.edu.co}
 \newcommand{\fechasencuentro}{19 y 20 de noviembre de 2026}
 
-% ---------- Cabecera y pie ----------
-\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-\fancyhead[L]{%
-  \begin{minipage}[b]{0.74\textwidth}
-    \isologo{9.2}\\[8pt]
-    {\footnotesize\color{iaccgris}\universidad\\\facultad, \proyecto}
-  \end{minipage}%
-  \hfill
-  \begin{minipage}[b]{0.2\textwidth}
-    \raggedleft\includegraphics[height=2.4cm]{escudo-ud.png}
-  \end{minipage}\\[6pt]
-  {\color{iaccnegro}\rule{\textwidth}{0.5pt}}
+% ---------- Cabecera y pie, colocados en coordenadas de página ----------
+\pagestyle{empty}
+\AddToHook{shipout/background}{%
+  \begin{tikzpicture}[remember picture, overlay, inner sep=0, outer sep=0]
+    \coordinate (nw) at (current page.north west);
+    % --- Cabecera oficial ---
+    \node[anchor=north west] at ($(nw)+(3cm,-1.0cm)$) {\includegraphics[width=7.9cm]{ud-cabecera.png}};
+    \node[anchor=base west, font=\cambria\bfseries\fontsize{7.5pt}{0pt}\selectfont] at ($(nw)+(5.25cm,-3.17cm)$) {\facultad};
+    \node[anchor=base west, font=\cambria\fontsize{8pt}{0pt}\selectfont] at ($(nw)+(5.25cm,-3.50cm)$) {\proyecto};
+    % --- Marca del encuentro ---
+    \node[anchor=north east] at ($(nw)+(19.59cm,-1.25cm)$) {\isologo{6.4}};
+    \node[anchor=base east, font=\itshape\fontsize{7.5pt}{0pt}\selectfont, text=iaccgris] at ($(nw)+(19.59cm,-3.05cm)$)
+      {\raisebox{-0.3\height}{\includegraphics[height=0.72cm]{logo-itenua.png}}\hspace{4pt}Quince años del semillero ITENUA};
+    % --- Pie oficial ---
+    \draw[iaccnegro, line width=0.6pt] ($(nw)+(3cm,-24.2cm)$) -- ($(nw)+(19.59cm,-24.2cm)$);
+    \node[anchor=base west, font=\cambria\fontsize{9pt}{0pt}\selectfont] at ($(nw)+(3cm,-25.05cm)$) {PBX: 57(1)3239300 Ext. 3002.};
+    \node[anchor=base west, font=\cambria\fontsize{9pt}{0pt}\selectfont] at ($(nw)+(3cm,-25.47cm)$) {Carrera 12 n.\textsuperscript{o} 4 30, bloque 7B, oficina 404B, Sede Candelaria,};
+    \node[anchor=base west, font=\cambria\fontsize{9pt}{0pt}\selectfont] at ($(nw)+(3cm,-25.89cm)$) {Bogotá D. C., Colombia.};
+    \node[anchor=base west, font=\cambria\bfseries\fontsize{7pt}{0pt}\selectfont] at ($(nw)+(3cm,-26.75cm)$) {Acreditación Institucional de Alta Calidad. Resolución n.\textsuperscript{o} 023653 del 10 de diciembre de 2021.};
+    \node[anchor=north east] at ($(nw)+(19.59cm,-24.85cm)$) {\includegraphics[width=2.95cm]{ud-linea-atencion.png}};
+    \node[anchor=base east, font=\cambria\fontsize{7pt}{0pt}\selectfont] at ($(nw)+(19.59cm,-26.75cm)$) {\href{mailto:\correoprograma}{\underline{\correoprograma}}};
+  \end{tikzpicture}%
 }
-\fancyfoot[L]{%
-  \raisebox{-0.35\height}{\includegraphics[height=0.9cm]{logo-itenua.png}}\hspace{4pt}%
-  {\footnotesize\color{iaccgris}Quince años del semillero ITENUA}%
-}
-\fancyfoot[C]{}
-\fancyfoot[R]{\footnotesize\color{iaccgris}\href{\sitioweb}{\sitioweb}\ifx\correo\empty\else\quad\correo\fi\quad\thepage}
 
 % ---------- Comandos para la carta ----------
 % \fechacarta{Bogotá D.C., 1 de octubre de 2026}
