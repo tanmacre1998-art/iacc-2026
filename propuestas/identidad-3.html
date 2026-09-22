@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Identidad visual · sistema F</title>
+<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;1,400;1,600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root { --rojo:#c9151e; --amarillo:#f4d300; --azul:#1f4fa3; --negro:#1a1a1a; --gris:#73777f; --mist:#e9eaed; }
+  body { margin:0; font-family:"Source Sans 3", sans-serif; color:var(--negro); background:#fff; font-size:17px; line-height:1.5; }
+  main { max-width:1100px; margin:0 auto; padding:40px 24px 80px; }
+  h1 { font-family:"STIX Two Text", serif; font-weight:400; font-size:2rem; margin:0 0 .25rem; }
+  h2 { font-family:"STIX Two Text", serif; font-weight:400; font-size:1.6rem; margin:0; }
+  .concept { border-top:1px solid var(--negro); padding:32px 0 48px; }
+  .concept-head { display:flex; align-items:baseline; gap:14px; margin-bottom:8px; }
+  .concept-head span { font-family:"STIX Two Text", serif; color:var(--rojo); font-size:1.3rem; }
+  .why { max-width:64ch; color:var(--gris); margin:0 0 28px; }
+  .row { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:20px; }
+  .tile { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; padding:24px 16px; border:1px solid var(--mist); min-height:180px; }
+  .tile.wide { grid-column:1 / -1; }
+  .tile.dark { background:var(--negro); color:#fff; border-color:var(--negro); }
+  .tile small { color:var(--gris); font-size:.85rem; }
+  .tile.dark small { color:#bbb; }
+  svg { display:block; max-width:100%; height:auto; }
+  .hero { grid-column:1 / -1; border:1px solid var(--mist); padding:56px 48px; display:flex; flex-direction:column; align-items:center; gap:28px; }
+  .hero .meta { font-family:"STIX Two Text", serif; color:var(--gris); text-align:center; }
+  .seal { display:flex; align-items:center; gap:10px; }
+  .seal img { width:48px; }
+  .seal div { font-family:"STIX Two Text", serif; font-size:.9rem; line-height:1.2; color:var(--gris); }
+  .seal div b { display:block; color:var(--negro); font-weight:400; font-size:1.05rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Sistema F: Δ y ∇</h1>
+  <p class="why">Los dos triángulos de la notación H<sup>∇</sup> + H<sub>Δ</sub>. El triángulo amarillo se difumina hacia la derecha y el rojo hacia la izquierda; entre ellos, dos segmentos cierran el paralelogramo y dejan el espacio para el nombre.</p>
+
+  <section class="concept">
+    <div class="concept-head"><span>1</span><h2>Isotipo</h2></div>
+    <p class="why">Solo los dos triángulos. Para favicon, redes, sello pequeño, marca de agua.</p>
+    <div class="row">
+      <div class="tile"><svg width="150" data-mark="iso" data-mode="color"></svg><small>Color</small></div>
+      <div class="tile"><svg width="150" data-mark="iso" data-mode="mono"></svg><small>Una tinta</small></div>
+      <div class="tile dark"><svg width="150" data-mark="iso" data-mode="neg"></svg><small>Negativo</small></div>
+      <div class="tile dark"><svg width="150" data-mark="iso" data-mode="colordark"></svg><small>Color sobre negro</small></div>
+      <div class="tile"><svg width="48" data-mark="iso" data-mode="color"></svg><svg width="24" data-mark="iso" data-mode="mono"></svg><small>Favicon</small></div>
+    </div>
+  </section>
+
+  <section class="concept">
+    <div class="concept-head"><span>2</span><h2>Imagotipo</h2></div>
+    <p class="why">Los triángulos unidos por los dos segmentos, con la sigla dentro: II IACC.</p>
+    <div class="row">
+      <div class="tile wide"><svg width="420" data-mark="imago" data-mode="color"></svg><small>Color</small></div>
+      <div class="tile"><svg width="300" data-mark="imago" data-mode="mono"></svg><small>Una tinta</small></div>
+      <div class="tile dark"><svg width="300" data-mark="imago" data-mode="neg"></svg><small>Negativo</small></div>
+      <div class="tile dark"><svg width="300" data-mark="imago" data-mode="colordark"></svg><small>Color sobre negro</small></div>
+      <div class="tile"><svg width="140" data-mark="imago" data-mode="color"></svg><small>Pequeño</small></div>
+    </div>
+  </section>
+
+  <section class="concept">
+    <div class="concept-head"><span>3</span><h2>Isologo</h2></div>
+    <p class="why">La misma base con el nombre completo dentro. Para cabeceras, afiches, certificados, firma de correo.</p>
+    <div class="row">
+      <div class="tile wide"><svg width="720" data-mark="isologo" data-mode="color"></svg><small>Color</small></div>
+      <div class="tile wide"><svg width="720" data-mark="isologo" data-mode="mono"></svg><small>Una tinta</small></div>
+      <div class="tile wide dark"><svg width="720" data-mark="isologo" data-mode="neg"></svg><small>Negativo</small></div>
+      <div class="tile wide dark"><svg width="720" data-mark="isologo" data-mode="colordark"></svg><small>Color sobre negro</small></div>
+    </div>
+  </section>
+
+  <section class="concept">
+    <div class="concept-head"><span>4</span><h2>Aplicación: cabecera de la página</h2></div>
+    <div class="row">
+      <div class="hero">
+        <svg width="860" data-mark="isologo" data-mode="color"></svg>
+        <div class="meta">Bogotá, 19 y 20 de noviembre de 2026 · Entrada libre con inscripción previa</div>
+        <div class="seal"><img src="../assets/logo-itenua.png" alt=""><div><b>15 años</b>ITENUA</div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="../marca.js"></script>
+<script>
+  document.querySelectorAll("svg[data-mark]").forEach(function (svg) {
+    window.MARCA[svg.getAttribute("data-mark")](svg, svg.getAttribute("data-mode"));
+  });
+</script>
+</body>
+</html>

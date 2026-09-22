@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Identidad visual · propuestas</title>
+<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root { --rojo:#c9151e; --amarillo:#f4d300; --azul:#1f4fa3; --negro:#1a1a1a; --gris:#73777f; --mist:#e9eaed; }
+  body { margin:0; font-family:"Source Sans 3", sans-serif; color:var(--negro); background:#fff; font-size:17px; line-height:1.5; }
+  main { max-width:1100px; margin:0 auto; padding:40px 24px 80px; }
+  h1 { font-family:"STIX Two Text", serif; font-weight:400; font-size:2rem; margin:0 0 .25rem; }
+  h2 { font-family:"STIX Two Text", serif; font-weight:400; font-size:1.6rem; margin:0; }
+  .concept { border-top:1px solid var(--negro); padding:32px 0 48px; }
+  .concept-head { display:flex; align-items:baseline; gap:14px; margin-bottom:8px; }
+  .concept-head span { font-family:"STIX Two Text", serif; color:var(--rojo); font-size:1.3rem; }
+  .why { max-width:64ch; color:var(--gris); margin:0 0 28px; }
+  .row { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:20px; align-items:stretch; }
+  .tile { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; padding:24px 12px; border:1px solid var(--mist); min-height:200px; }
+  .tile.dark { background:var(--negro); color:#fff; border-color:var(--negro); }
+  .tile small { color:var(--gris); font-size:.85rem; }
+  .tile.dark small { color:#bbb; }
+  svg { display:block; }
+  .lockup { grid-column: 1 / -1; padding:32px; border:1px solid var(--mist); display:flex; align-items:center; gap:28px; flex-wrap:wrap; }
+  .lockup .text { font-family:"STIX Two Text", serif; line-height:1.15; }
+  .lockup .text .kicker { font-style:italic; color:var(--rojo); font-size:1.1rem; display:block; margin-bottom:4px; }
+  .lockup .text .name { font-size:1.75rem; display:block; max-width:20ch; }
+  .lockup .text .year { display:block; color:var(--gris); margin-top:6px; }
+  .seal { margin-left:auto; display:flex; align-items:center; gap:10px; padding-left:28px; border-left:1px solid var(--mist); }
+  .seal img { width:56px; }
+  .seal div { font-family:"STIX Two Text", serif; font-size:.95rem; line-height:1.2; color:var(--gris); }
+  .seal div b { display:block; color:var(--negro); font-weight:400; font-size:1.1rem; }
+  .palette { display:flex; gap:12px; flex-wrap:wrap; margin:16px 0 0; }
+  .sw { width:120px; padding:10px; border:1px solid var(--mist); font-size:.85rem; }
+  .sw i { display:block; height:48px; margin-bottom:6px; }
+  .sw b { display:block; font-weight:600; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Identidad visual: tres propuestas de marca</h1>
+  <p class="why">Cada una funciona sola (isotipo), con el nombre (imagotipo), en una tinta y en negativo. Las tres se construyen sobre la cuadrícula y usan la misma paleta.</p>
+
+  <div class="palette">
+    <div class="sw"><i style="background:var(--rojo)"></i><b>Rojo</b>Álgebra · #C9151E</div>
+    <div class="sw"><i style="background:var(--amarillo)"></i><b>Amarillo</b>Combinatoria · #F4D300</div>
+    <div class="sw"><i style="background:var(--azul)"></i><b>Azul</b>Computación · #1F4FA3</div>
+    <div class="sw"><i style="background:var(--negro)"></i><b>Negro</b>Texto y encuentro · #1A1A1A</div>
+    <div class="sw"><i style="background:#fff;border:1px solid var(--mist)"></i><b>Blanco</b>Fondo</div>
+  </div>
+
+  <!-- ============ SÍMBOLOS ============ -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <!-- Celda base: 20 u, con separación de 1.6 u -->
+      <symbol id="cell"><rect x="0.8" y="0.8" width="18.4" height="18.4"/></symbol>
+
+      <!-- A · Espiral: tres piezas L que parten de una celda común (4 × 5) -->
+      <g id="A-color">
+        <g fill="var(--rojo)"><use href="#cell" x="20" y="20"/><use href="#cell" x="20" y="0"/><use href="#cell" x="40" y="0"/></g>
+        <g fill="var(--azul)"><use href="#cell" x="40" y="40"/><use href="#cell" x="60" y="40"/><use href="#cell" x="60" y="60"/></g>
+        <g fill="var(--amarillo)"><use href="#cell" x="20" y="60"/><use href="#cell" x="20" y="80"/><use href="#cell" x="0" y="80"/></g>
+        <g fill="var(--negro)"><use href="#cell" x="20" y="40"/></g>
+      </g>
+      <g id="A-mono">
+        <use href="#cell" x="20" y="20"/><use href="#cell" x="20" y="0"/><use href="#cell" x="40" y="0"/>
+        <use href="#cell" x="40" y="40"/><use href="#cell" x="60" y="40"/><use href="#cell" x="60" y="60"/>
+        <use href="#cell" x="20" y="60"/><use href="#cell" x="20" y="80"/><use href="#cell" x="0" y="80"/>
+        <use href="#cell" x="20" y="40"/>
+      </g>
+
+      <!-- B · Mosaico: cuadrado 4 × 4 con tres piezas y una pieza en blanco (T) -->
+      <g id="B-color">
+        <g fill="var(--rojo)"><use href="#cell" x="0" y="0"/><use href="#cell" x="20" y="0"/><use href="#cell" x="40" y="0"/><use href="#cell" x="0" y="20"/></g>
+        <g fill="var(--azul)"><use href="#cell" x="60" y="0"/><use href="#cell" x="60" y="20"/><use href="#cell" x="40" y="20"/><use href="#cell" x="60" y="40"/></g>
+        <g fill="var(--amarillo)"><use href="#cell" x="0" y="60"/><use href="#cell" x="20" y="60"/><use href="#cell" x="40" y="60"/><use href="#cell" x="60" y="60"/></g>
+      </g>
+      <g id="B-mono">
+        <use href="#cell" x="0" y="0"/><use href="#cell" x="20" y="0"/><use href="#cell" x="40" y="0"/><use href="#cell" x="0" y="20"/>
+        <use href="#cell" x="60" y="0"/><use href="#cell" x="60" y="20"/><use href="#cell" x="40" y="20"/><use href="#cell" x="60" y="40"/>
+        <use href="#cell" x="0" y="60"/><use href="#cell" x="20" y="60"/><use href="#cell" x="40" y="60"/><use href="#cell" x="60" y="60"/>
+      </g>
+
+      <!-- C · Retículo: diagrama de Hasse del álgebra de Boole B3 (= hipercubo Q3 = cadenas de 3 bits) -->
+      <g id="C-color" stroke-width="3.5" stroke-linecap="round" fill="none">
+        <!-- aristas por dirección: bit 1 rojo, bit 2 amarillo, bit 3 azul -->
+        <g stroke="var(--rojo)"><path d="M50 95 L18 70"/><path d="M50 62 L18 37"/><path d="M82 70 L50 45"/><path d="M82 37 L50 12"/></g>
+        <g stroke="var(--amarillo)"><path d="M50 95 L50 62"/><path d="M18 70 L18 37"/><path d="M82 70 L82 37"/><path d="M50 45 L50 12"/></g>
+        <g stroke="var(--azul)"><path d="M50 95 L82 70"/><path d="M18 70 L50 45"/><path d="M50 62 L82 37"/><path d="M18 37 L50 12"/></g>
+        <g fill="#fff" stroke="var(--negro)" stroke-width="2.5">
+          <circle cx="50" cy="95" r="5"/><circle cx="18" cy="70" r="5"/><circle cx="50" cy="62" r="5"/><circle cx="82" cy="70" r="5"/>
+          <circle cx="18" cy="37" r="5"/><circle cx="50" cy="45" r="5"/><circle cx="82" cy="37" r="5"/>
+        </g>
+        <circle cx="50" cy="12" r="6" fill="var(--negro)"/>
+      </g>
+      <g id="C-mono" stroke-width="3.5" stroke-linecap="round">
+        <g><path d="M50 95 L18 70"/><path d="M50 62 L18 37"/><path d="M82 70 L50 45"/><path d="M82 37 L50 12"/>
+           <path d="M50 95 L50 62"/><path d="M18 70 L18 37"/><path d="M82 70 L82 37"/><path d="M50 45 L50 12"/>
+           <path d="M50 95 L82 70"/><path d="M18 70 L50 45"/><path d="M50 62 L82 37"/><path d="M18 37 L50 12"/></g>
+        <g stroke-width="2.5" fill="none">
+          <circle cx="50" cy="95" r="5"/><circle cx="18" cy="70" r="5"/><circle cx="50" cy="62" r="5"/><circle cx="82" cy="70" r="5"/>
+          <circle cx="18" cy="37" r="5"/><circle cx="50" cy="45" r="5"/><circle cx="82" cy="37" r="5"/>
+        </g>
+        <circle cx="50" cy="12" r="6" stroke="none"/>
+      </g>
+    </defs>
+  </svg>
+
+  <!-- ============ A ============ -->
+  <section class="concept">
+    <div class="concept-head"><span>A</span><h2>Espiral de tetrominós</h2></div>
+    <p class="why">Tres piezas L, una por área, parten de una misma celda negra: el encuentro. Giran en el mismo sentido, como los tres brazos de la espiral de ITENUA, pero sobre la cuadrícula. Es la más emparentada con el semillero.</p>
+    <div class="row">
+      <div class="tile"><svg width="120" height="150" viewBox="0 0 80 100"><use href="#A-color"/></svg><small>Color</small></div>
+      <div class="tile"><svg width="120" height="150" viewBox="0 0 80 100" fill="#1a1a1a"><use href="#A-mono"/></svg><small>Una tinta</small></div>
+      <div class="tile dark"><svg width="120" height="150" viewBox="0 0 80 100" fill="#fff"><use href="#A-mono"/></svg><small>Negativo</small></div>
+      <div class="tile dark"><svg width="120" height="150" viewBox="0 0 80 100"><use href="#A-color"/></svg><small>Color sobre negro</small></div>
+      <div class="tile"><svg width="32" height="40" viewBox="0 0 80 100"><use href="#A-color"/></svg><svg width="16" height="20" viewBox="0 0 80 100" fill="#1a1a1a"><use href="#A-mono"/></svg><small>Favicon y sello</small></div>
+      <div class="lockup">
+        <svg width="72" height="90" viewBox="0 0 80 100"><use href="#A-color"/></svg>
+        <div class="text"><span class="kicker">Segundo Encuentro</span><span class="name">Interacciones entre Álgebra, Combinatoria y la Computación</span><span class="year">Bogotá, 19 y 20 de noviembre de 2026</span></div>
+        <div class="seal"><img src="../assets/logo-itenua.png" alt=""><div><b>15 años</b>ITENUA</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ B ============ -->
+  <section class="concept">
+    <div class="concept-head"><span>B</span><h2>Mosaico</h2></div>
+    <p class="why">Un cuadrado 4 × 4 cubierto por tres tetrominós (L, T, I) y una pieza en blanco con forma de T: el espacio que dejan las tres áreas es también una pieza. Silueta cuadrada, muy sólida como ícono y en tamaños pequeños.</p>
+    <div class="row">
+      <div class="tile"><svg width="120" height="120" viewBox="0 0 80 80"><use href="#B-color"/></svg><small>Color</small></div>
+      <div class="tile"><svg width="120" height="120" viewBox="0 0 80 80" fill="#1a1a1a"><use href="#B-mono"/></svg><small>Una tinta</small></div>
+      <div class="tile dark"><svg width="120" height="120" viewBox="0 0 80 80" fill="#fff"><use href="#B-mono"/></svg><small>Negativo</small></div>
+      <div class="tile dark"><svg width="120" height="120" viewBox="0 0 80 80"><use href="#B-color"/></svg><small>Color sobre negro</small></div>
+      <div class="tile"><svg width="32" height="32" viewBox="0 0 80 80"><use href="#B-color"/></svg><svg width="16" height="16" viewBox="0 0 80 80" fill="#1a1a1a"><use href="#B-mono"/></svg><small>Favicon y sello</small></div>
+      <div class="lockup">
+        <svg width="80" height="80" viewBox="0 0 80 80"><use href="#B-color"/></svg>
+        <div class="text"><span class="kicker">Segundo Encuentro</span><span class="name">Interacciones entre Álgebra, Combinatoria y la Computación</span><span class="year">Bogotá, 19 y 20 de noviembre de 2026</span></div>
+        <div class="seal"><img src="../assets/logo-itenua.png" alt=""><div><b>15 años</b>ITENUA</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ C ============ -->
+  <section class="concept">
+    <div class="concept-head"><span>C</span><h2>Retículo</h2></div>
+    <p class="why">El diagrama de Hasse del álgebra de Boole de tres átomos: es a la vez un retículo (álgebra), el hipercubo Q₃ (combinatoria) y el conjunto de cadenas de tres bits (computación). Cada dirección de arista lleva el color de un área; el vértice superior, negro, es donde las tres se unen. Es la más "matemática" y la menos parecida a un logo genérico.</p>
+    <div class="row">
+      <div class="tile"><svg width="130" height="140" viewBox="0 0 100 107"><use href="#C-color"/></svg><small>Color</small></div>
+      <div class="tile"><svg width="130" height="140" viewBox="0 0 100 107" stroke="#1a1a1a" fill="#1a1a1a"><use href="#C-mono"/></svg><small>Una tinta</small></div>
+      <div class="tile dark"><svg width="130" height="140" viewBox="0 0 100 107" stroke="#fff" fill="#fff"><use href="#C-mono"/></svg><small>Negativo</small></div>
+      <div class="tile dark"><svg width="130" height="140" viewBox="0 0 100 107"><use href="#C-color"/></svg><small>Color sobre negro</small></div>
+      <div class="tile"><svg width="32" height="34" viewBox="0 0 100 107"><use href="#C-color"/></svg><svg width="16" height="17" viewBox="0 0 100 107" stroke="#1a1a1a" fill="#1a1a1a"><use href="#C-mono"/></svg><small>Favicon y sello</small></div>
+      <div class="lockup">
+        <svg width="84" height="90" viewBox="0 0 100 107"><use href="#C-color"/></svg>
+        <div class="text"><span class="kicker">Segundo Encuentro</span><span class="name">Interacciones entre Álgebra, Combinatoria y la Computación</span><span class="year">Bogotá, 19 y 20 de noviembre de 2026</span></div>
+        <div class="seal"><img src="../assets/logo-itenua.png" alt=""><div><b>15 años</b>ITENUA</div></div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

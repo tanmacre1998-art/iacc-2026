@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exportar la marca</title>
+<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; font-family:"Source Sans 3", sans-serif; color:#1a1a1a; background:#fff; font-size:17px; line-height:1.5; }
+  main { max-width:1000px; margin:0 auto; padding:40px 24px 80px; }
+  h1 { font-family:"STIX Two Text", serif; font-weight:400; font-size:2rem; margin:0 0 .25rem; }
+  p.lead { color:#73777f; max-width:64ch; }
+  .controls { display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin:24px 0; padding:16px; border:1px solid #e9eaed; }
+  label { font-weight:600; }
+  select, input { font:inherit; padding:4px 8px; }
+  .item { display:grid; grid-template-columns:1fr auto; gap:20px; align-items:center; padding:20px 0; border-top:1px solid #e9eaed; }
+  .item .prev { padding:16px; }
+  .item .prev.dark { background:#1a1a1a; }
+  .item svg { max-width:100%; height:auto; display:block; }
+  .item strong { font-family:"STIX Two Text", serif; font-weight:400; font-size:1.15rem; display:block; margin-bottom:8px; }
+  .btns { display:flex; flex-direction:column; gap:8px; }
+  button { font:inherit; font-weight:600; padding:8px 14px; border:1.5px solid #1a1a1a; background:#fff; cursor:pointer; border-radius:2px; }
+  button:hover { background:#f6f6f7; }
+  #status { color:#73777f; font-size:.95rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Exportar la marca</h1>
+  <p class="lead">Genera archivos listos para Word, Canva, PowerPoint o LaTeX. Los SVG llevan la tipografía STIX Two incrustada, así que se ven igual en cualquier programa; los PNG tienen fondo transparente (salvo el negativo).</p>
+
+  <div class="controls">
+    <label for="scale">Ancho del PNG</label>
+    <select id="scale">
+      <option value="1200">1200 px (web, correo)</option>
+      <option value="2400" selected>2400 px (documentos, diplomas)</option>
+      <option value="4800">4800 px (afiches, impresión)</option>
+    </select>
+    <span id="status">Cargando tipografía…</span>
+  </div>
+
+  <div id="list"></div>
+</main>
+
+<script src="../marca.js"></script>
+<script>
+(function () {
+  var NS = "http://www.w3.org/2000/svg";
+  var items = [
+    ["isotipo", "iso", "color"], ["isotipo", "iso", "mono"], ["isotipo", "iso", "neg"],
+    ["imagotipo", "imago", "color"], ["imagotipo", "imago", "mono"], ["imagotipo", "imago", "neg"],
+    ["isologo", "isologo", "color"], ["isologo", "isologo", "mono"], ["isologo", "isologo", "neg"]
+  ];
+  var labels = { color: "color", mono: "una tinta", neg: "negativo" };
+  var fontCss = "";
+
+  // Descarga la tipografía de Google Fonts y la convierte en @font-face con data: URIs.
+  function loadFont() {
+    var url = "https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;1,400&display=swap";
+    return fetch(url).then(function (r) { return r.text(); }).then(function (css) {
+      var urls = [];
+      css.replace(/url\((https:[^)]+)\)/g, function (m, u) { urls.push(u); return m; });
+      return Promise.all(urls.map(function (u) {
+        return fetch(u).then(function (r) { return r.arrayBuffer(); }).then(function (buf) {
+          var bytes = new Uint8Array(buf), bin = "";
+          for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+          return [u, "data:font/woff2;base64," + btoa(bin)];
+        });
+      })).then(function (pairs) {
+        pairs.forEach(function (p) { css = css.split(p[0]).join(p[1]); });
+        fontCss = css;
+      });
+    });
+  }
+
+  function build(mark, mode, embedFont) {
+    var svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("xmlns", NS);
+    window.MARCA[mark](svg, mode);
+    var vb = svg.getAttribute("viewBox").split(" ").map(Number);
+    if (mode === "neg") {
+      var bg = document.createElementNS(NS, "rect");
+      bg.setAttribute("width", "100%"); bg.setAttribute("height", "100%"); bg.setAttribute("fill", "#1a1a1a");
+      svg.insertBefore(bg, svg.firstChild);
+    }
+    if (embedFont && mark !== "iso") {
+      var st = document.createElementNS(NS, "style");
+      st.textContent = fontCss;
+      svg.insertBefore(st, svg.firstChild);
+    }
+    return { svg: svg, w: vb[2], h: vb[3] };
+  }
+
+  function download(name, blob) {
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob); a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 5000);
+  }
+
+  function svgFile(name, mark, mode) {
+    var b = build(mark, mode, true);
+    b.svg.setAttribute("width", b.w * 4); b.svg.setAttribute("height", Math.round(b.h * 4));
+    var src = new XMLSerializer().serializeToString(b.svg);
+    download(name + ".svg", new Blob([src], { type: "image/svg+xml" }));
+  }
+
+  function pngFile(name, mark, mode) {
+    var width = parseInt(document.getElementById("scale").value, 10);
+    var b = build(mark, mode, true);
+    var height = Math.round(width * b.h / b.w);
+    b.svg.setAttribute("width", width); b.svg.setAttribute("height", height);
+    var src = new XMLSerializer().serializeToString(b.svg);
+    var img = new Image();
+    img.onload = function () {
+      var c = document.createElement("canvas");
+      c.width = width; c.height = height;
+      c.getContext("2d").drawImage(img, 0, 0, width, height);
+      c.toBlob(function (blob) { download(name + "-" + width + "px.png", blob); }, "image/png");
+    };
+    img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(src);
+  }
+
+  var list = document.getElementById("list");
+  items.forEach(function (it) {
+    var name = it[0] + "-" + (it[2] === "neg" ? "negativo" : it[2]);
+    var row = document.createElement("div"); row.className = "item";
+    var prev = document.createElement("div"); prev.className = "prev" + (it[2] === "neg" ? " dark" : "");
+    var b = build(it[1], it[2], false);
+    b.svg.setAttribute("width", Math.min(700, b.w * 2.2));
+    prev.appendChild(b.svg);
+    var side = document.createElement("div");
+    side.innerHTML = "<strong>" + it[0].charAt(0).toUpperCase() + it[0].slice(1) + ", " + labels[it[2]] + "</strong>";
+    var btns = document.createElement("div"); btns.className = "btns";
+    var b1 = document.createElement("button"); b1.textContent = "Descargar SVG"; b1.onclick = function () { svgFile(name, it[1], it[2]); };
+    var b2 = document.createElement("button"); b2.textContent = "Descargar PNG"; b2.onclick = function () { pngFile(name, it[1], it[2]); };
+    btns.appendChild(b1); btns.appendChild(b2); side.appendChild(btns);
+    row.appendChild(prev); row.appendChild(side); list.appendChild(row);
+  });
+
+  loadFont().then(function () {
+    document.getElementById("status").textContent = "Tipografía lista. Los archivos se guardan en tu carpeta de descargas.";
+  }).catch(function () {
+    document.getElementById("status").textContent = "No se pudo descargar la tipografía (¿sin internet?). Los PNG saldrán con Times New Roman.";
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Identidad visual · segunda ronda</title>
+<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root { --rojo:#c9151e; --amarillo:#f4d300; --azul:#1f4fa3; --negro:#1a1a1a; --gris:#73777f; --mist:#e9eaed; }
+  body { margin:0; font-family:"Source Sans 3", sans-serif; color:var(--negro); background:#fff; font-size:17px; line-height:1.5; }
+  main { max-width:1100px; margin:0 auto; padding:40px 24px 80px; }
+  h1 { font-family:"STIX Two Text", serif; font-weight:400; font-size:2rem; margin:0 0 .25rem; }
+  h2 { font-family:"STIX Two Text", serif; font-weight:400; font-size:1.6rem; margin:0; }
+  .concept { border-top:1px solid var(--negro); padding:32px 0 48px; }
+  .concept-head { display:flex; align-items:baseline; gap:14px; margin-bottom:8px; }
+  .concept-head span { font-family:"STIX Two Text", serif; color:var(--rojo); font-size:1.3rem; }
+  .why { max-width:64ch; color:var(--gris); margin:0 0 28px; }
+  .row { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:20px; }
+  .tile { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; padding:24px 12px; border:1px solid var(--mist); min-height:210px; }
+  .tile.dark { background:var(--negro); color:#fff; border-color:var(--negro); }
+  .tile small { color:var(--gris); font-size:.85rem; }
+  .tile.dark small { color:#bbb; }
+  svg { display:block; }
+  .lockup { grid-column:1 / -1; padding:32px; border:1px solid var(--mist); display:flex; align-items:center; gap:28px; flex-wrap:wrap; }
+  .lockup .text { font-family:"STIX Two Text", serif; line-height:1.15; }
+  .lockup .text .kicker { font-style:italic; color:var(--rojo); font-size:1.1rem; display:block; margin-bottom:4px; }
+  .lockup .text .name { font-size:1.75rem; display:block; max-width:20ch; }
+  .lockup .text .year { display:block; color:var(--gris); margin-top:6px; }
+  .seal { margin-left:auto; display:flex; align-items:center; gap:10px; padding-left:28px; border-left:1px solid var(--mist); }
+  .seal img { width:56px; }
+  .seal div { font-family:"STIX Two Text", serif; font-size:.95rem; line-height:1.2; color:var(--gris); }
+  .seal div b { display:block; color:var(--negro); font-weight:400; font-size:1.1rem; }
+  .band { grid-column:1 / -1; border:1px solid var(--mist); padding:0; overflow:hidden; }
+  .band svg { width:100%; height:auto; }
+  .diploma { grid-column:1 / -1; border:1px solid var(--mist); padding:40px 48px; display:grid; grid-template-columns:1fr auto; gap:32px; align-items:start; font-family:"STIX Two Text", serif; }
+  .diploma .t { font-size:1.9rem; line-height:1.1; }
+  .diploma .s { color:var(--gris); margin-top:10px; font-size:1rem; font-family:"Source Sans 3", sans-serif; }
+  .diploma .name { margin-top:28px; font-size:1.4rem; border-bottom:1px solid var(--negro); display:inline-block; padding-bottom:4px; }
+  .note { font-size:.9rem; color:var(--gris); max-width:70ch; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Identidad visual, segunda ronda: la estructura de la investigación</h1>
+  <p class="why">Todas parten de lo que hay en el tablero: tetraedros (K₄ con la arista oculta punteada) unidos por segmentos huecos, y la notación de la diferenciación de Zavadskij. Colores: rojo, amarillo, azul, negro y blanco.</p>
+
+  <!-- ============ D ============ -->
+  <section class="concept">
+    <div class="concept-head"><span>D</span><h2>Enlace</h2></div>
+    <p class="why">Dos tetraedros unidos por un segmento hueco. Es la unidad mínima de la estructura: aristas llenas para el tetraedro, arista oculta punteada, y el enlace dibujado como tubo vacío. Un tetraedro por área en la versión completa; dos bastan para el ícono.</p>
+    <div class="row">
+      <div class="tile"><svg width="150" height="120" viewBox="0 0 120 96" data-mark="D" data-mode="color"></svg><small>Color</small></div>
+      <div class="tile"><svg width="150" height="120" viewBox="0 0 120 96" data-mark="D" data-mode="mono"></svg><small>Una tinta</small></div>
+      <div class="tile dark"><svg width="150" height="120" viewBox="0 0 120 96" data-mark="D" data-mode="neg"></svg><small>Negativo</small></div>
+      <div class="tile dark"><svg width="150" height="120" viewBox="0 0 120 96" data-mark="D" data-mode="colordark"></svg><small>Color sobre negro</small></div>
+      <div class="tile"><svg width="40" height="32" viewBox="0 0 120 96" data-mark="D" data-mode="color"></svg><svg width="20" height="16" viewBox="0 0 120 96" data-mark="D" data-mode="mono"></svg><small>Favicon y sello</small></div>
+      <div class="lockup">
+        <svg width="110" height="88" viewBox="0 0 120 96" data-mark="D" data-mode="color"></svg>
+        <div class="text"><span class="kicker">Segundo Encuentro</span><span class="name">Interacciones entre Álgebra, Combinatoria y la Computación</span><span class="year">Bogotá, 19 y 20 de noviembre de 2026</span></div>
+        <div class="seal"><img src="../assets/logo-itenua.png" alt=""><div><b>15 años</b>ITENUA</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ E ============ -->
+  <section class="concept">
+    <div class="concept-head"><span>E</span><h2>Triple enlace</h2></div>
+    <p class="why">Tres tetraedros, uno por área, enlazados en triángulo por segmentos huecos: la estructura del tablero reducida a su ciclo mínimo. Más rica como imagotipo y para afiches; en tamaños muy pequeños se usa la versión de un solo enlace (D).</p>
+    <div class="row">
+      <div class="tile"><svg width="150" height="130" viewBox="0 0 124 108" data-mark="E" data-mode="color"></svg><small>Color</small></div>
+      <div class="tile"><svg width="150" height="130" viewBox="0 0 124 108" data-mark="E" data-mode="mono"></svg><small>Una tinta</small></div>
+      <div class="tile dark"><svg width="150" height="130" viewBox="0 0 124 108" data-mark="E" data-mode="neg"></svg><small>Negativo</small></div>
+      <div class="tile dark"><svg width="150" height="130" viewBox="0 0 124 108" data-mark="E" data-mode="colordark"></svg><small>Color sobre negro</small></div>
+      <div class="tile"><svg width="40" height="35" viewBox="0 0 124 108" data-mark="E" data-mode="color"></svg><svg width="20" height="17" viewBox="0 0 124 108" data-mark="E" data-mode="mono"></svg><small>Favicon y sello</small></div>
+      <div class="lockup">
+        <svg width="110" height="96" viewBox="0 0 124 108" data-mark="E" data-mode="color"></svg>
+        <div class="text"><span class="kicker">Segundo Encuentro</span><span class="name">Interacciones entre Álgebra, Combinatoria y la Computación</span><span class="year">Bogotá, 19 y 20 de noviembre de 2026</span></div>
+        <div class="seal"><img src="../assets/logo-itenua.png" alt=""><div><b>15 años</b>ITENUA</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ F ============ -->
+  <section class="concept">
+    <div class="concept-head"><span>F</span><h2>∇Δ, diferenciación</h2></div>
+    <p class="why">La notación del algoritmo de Zavadskij hecha marca: <span style="font-family:'STIX Two Text',serif">H<sup>∇</sup> + H<sub>Δ</sub></span>. Un triángulo hacia arriba (el subíndice, abajo a la izquierda) y otro hacia abajo (el superíndice, arriba a la derecha) que comparten la arista diagonal: juntos forman un paralelogramo, que es también dos caras desplegadas de un tetraedro. La más simple de todas y la que mejor se reproduce; funciona muy bien como sello y como patrón repetido.</p>
+    <div class="row">
+      <div class="tile"><svg width="130" height="130" viewBox="0 0 110 104" data-mark="F" data-mode="color"></svg><small>Color</small></div>
+      <div class="tile"><svg width="130" height="130" viewBox="0 0 110 104" data-mark="F" data-mode="mono"></svg><small>Una tinta</small></div>
+      <div class="tile dark"><svg width="130" height="130" viewBox="0 0 110 104" data-mark="F" data-mode="neg"></svg><small>Negativo</small></div>
+      <div class="tile dark"><svg width="130" height="130" viewBox="0 0 110 104" data-mark="F" data-mode="colordark"></svg><small>Color sobre negro</small></div>
+      <div class="tile"><svg width="34" height="32" viewBox="0 0 110 104" data-mark="F" data-mode="color"></svg><svg width="17" height="16" viewBox="0 0 110 104" data-mark="F" data-mode="mono"></svg><small>Favicon y sello</small></div>
+      <div class="lockup">
+        <svg width="96" height="90" viewBox="0 0 110 104" data-mark="F" data-mode="color"></svg>
+        <div class="text"><span class="kicker">Segundo Encuentro</span><span class="name">Interacciones entre Álgebra, Combinatoria y la Computación</span><span class="year">Bogotá, 19 y 20 de noviembre de 2026</span></div>
+        <div class="seal"><img src="../assets/logo-itenua.png" alt=""><div><b>15 años</b>ITENUA</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ G ============ -->
+  <section class="concept">
+    <div class="concept-head"><span>G</span><h2>Gancho de Zavadskij</h2></div>
+    <p class="why">El diagrama del tablero: un punto base con dos brazos que suben a dos puntos, y encima el poset derivado. Menos ícono y más "firma gráfica": sirve como motivo de fondo, separador y patrón, y acompaña a cualquiera de las anteriores.</p>
+    <div class="row">
+      <div class="tile"><svg width="130" height="120" viewBox="0 0 100 92" data-mark="G" data-mode="color"></svg><small>Color</small></div>
+      <div class="tile"><svg width="130" height="120" viewBox="0 0 100 92" data-mark="G" data-mode="mono"></svg><small>Una tinta</small></div>
+      <div class="tile dark"><svg width="130" height="120" viewBox="0 0 100 92" data-mark="G" data-mode="neg"></svg><small>Negativo</small></div>
+      <div class="tile"><svg width="34" height="31" viewBox="0 0 100 92" data-mark="G" data-mode="color"></svg><svg width="17" height="16" viewBox="0 0 100 92" data-mark="G" data-mode="mono"></svg><small>Favicon y sello</small></div>
+    </div>
+  </section>
+
+  <!-- ============ Aplicaciones ============ -->
+  <section class="concept">
+    <div class="concept-head"><span>+</span><h2>La estructura completa como patrón</h2></div>
+    <p class="why">Para cabeceras, afiches y diplomas: la cadena de tetraedros enlazados, como en el tablero. Se genera con el mismo dibujo que los íconos D y E, así que toda la identidad usa un solo trazo.</p>
+    <div class="row">
+      <div class="band"><svg viewBox="0 0 900 150" data-mark="band" data-mode="color"></svg></div>
+      <div class="diploma">
+        <div>
+          <div class="t">Certificado de asistencia</div>
+          <div class="s">Segundo Encuentro Interacciones entre Álgebra, Combinatoria y la Computación<br>Bogotá, 19 y 20 de noviembre de 2026</div>
+          <div class="name">Nombre Apellido Apellido</div>
+        </div>
+        <svg width="120" height="104" viewBox="0 0 124 108" data-mark="E" data-mode="mono"></svg>
+        <div class="band" style="grid-column:1/-1;border:0;border-top:1px solid var(--mist);padding-top:16px"><svg viewBox="0 0 900 90" data-mark="band-mono" data-mode="mono" style="opacity:.8"></svg></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var NS = "http://www.w3.org/2000/svg";
+  var C = { rojo: "#c9151e", amarillo: "#f4d300", azul: "#1f4fa3", negro: "#1a1a1a", blanco: "#ffffff" };
+
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+
+  // Colores según modo
+  function ink(mode) { return (mode === "neg") ? C.blanco : C.negro; }
+  function paper(mode) { return (mode === "neg" || mode === "colordark") ? C.negro : C.blanco; }
+  function area(mode, color) { return (mode === "mono" || mode === "neg") ? ink(mode) : color; }
+
+  // Tetraedro: A ápice, B y C base frontal, D vértice trasero (aristas punteadas).
+  // Devuelve las coordenadas absolutas de sus vértices.
+  function tetra(parent, x, y, s, color, mode, sw) {
+    sw = sw || 3;
+    // Vista como en el tablero: silueta cuadrilátera A-D-C-B, diagonal AC visible, diagonal BD oculta.
+    var A = [x - 4 * s, y - 26 * s], B = [x - 26 * s, y + 12 * s], Cc = [x + 12 * s, y + 20 * s], D = [x + 26 * s, y - 6 * s];
+    var g = el("g", { stroke: color, "stroke-width": sw, "stroke-linecap": "round", "stroke-linejoin": "round", fill: "none" }, parent);
+    el("path", { d: "M" + A + " L" + B + " L" + Cc + " L" + D + " Z M" + A + " L" + Cc }, g);
+    el("path", { d: "M" + B + " L" + D, "stroke-dasharray": (2.2 * sw) + " " + (1.8 * sw) }, g);
+    return { A: A, B: B, C: Cc, D: D };
+  }
+
+  // Segmento hueco: tubo entre p y q.
+  function hollow(parent, p, q, mode, w) {
+    w = w || 7;
+    el("line", { x1: p[0], y1: p[1], x2: q[0], y2: q[1], stroke: ink(mode), "stroke-width": w, "stroke-linecap": "round" }, parent);
+    el("line", { x1: p[0], y1: p[1], x2: q[0], y2: q[1], stroke: paper(mode), "stroke-width": w - 3.2, "stroke-linecap": "round" }, parent);
+  }
+  function dot(parent, p, mode, r) { el("circle", { cx: p[0], cy: p[1], r: r || 3.2, fill: ink(mode) }, parent); }
+
+  // ---------- D: dos tetraedros ----------
+  function markD(svg, mode) {
+    var t1 = tetra(svg, 28, 30, 1, area(mode, C.rojo), mode);
+    var t2 = tetra(svg, 94, 68, 1, area(mode, C.azul), mode);
+    hollow(svg, t1.C, t2.A, mode);
+    dot(svg, t1.C, mode); dot(svg, t2.A, mode);
+  }
+
+  // ---------- E: tres tetraedros en triángulo ----------
+  function markE(svg, mode) {
+    var s = 0.78;
+    var t1 = tetra(svg, 62, 26, s, area(mode, C.rojo), mode);
+    var t2 = tetra(svg, 22, 88, s, area(mode, C.amarillo), mode);
+    var t3 = tetra(svg, 102, 88, s, area(mode, C.azul), mode);
+    hollow(svg, t1.B, t2.A, mode, 6);
+    hollow(svg, t1.C, t3.A, mode, 6);
+    hollow(svg, t2.C, t3.B, mode, 6);
+    [t1.B, t1.C, t2.A, t3.A, t2.C, t3.B].forEach(function (p) { dot(svg, p, mode, 2.8); });
+  }
+
+  // ---------- F: ∇ y Δ desplazados; intersección exacta en azul ----------
+  function clip(subject, clipPoly) {          // Sutherland–Hodgman
+    var out = subject;
+    for (var i = 0; i < clipPoly.length; i++) {
+      var a = clipPoly[i], b = clipPoly[(i + 1) % clipPoly.length];
+      var input = out; out = [];
+      function inside(p) { return (b[0] - a[0]) * (p[1] - a[1]) - (b[1] - a[1]) * (p[0] - a[0]) <= 0; }
+      function inter(p, q) {
+        var d1 = [q[0] - p[0], q[1] - p[1]], d2 = [b[0] - a[0], b[1] - a[1]];
+        var den = d1[0] * d2[1] - d1[1] * d2[0];
+        var t = ((a[0] - p[0]) * d2[1] - (a[1] - p[1]) * d2[0]) / den;
+        return [p[0] + t * d1[0], p[1] + t * d1[1]];
+      }
+      for (var j = 0; j < input.length; j++) {
+        var cur = input[j], prev = input[(j + input.length - 1) % input.length];
+        if (inside(cur)) { if (!inside(prev)) out.push(inter(prev, cur)); out.push(cur); }
+        else if (inside(prev)) out.push(inter(prev, cur));
+      }
+    }
+    return out;
+  }
+  function poly(parent, pts, attrs) { attrs.points = pts.map(function (p) { return p[0].toFixed(2) + "," + p[1].toFixed(2); }).join(" "); return el("polygon", attrs, parent); }
+  function markF(svg, mode) {
+    // Δ abajo a la izquierda (subíndice) y ∇ arriba a la derecha (superíndice),
+    // compartiendo la arista diagonal, con una separación fina: juntos forman
+    // un paralelogramo, dos caras desplegadas de un tetraedro.
+    var up = [[6, 98], [70, 98], [38, 42]];
+    var gx = 2.6, gy = -1.5;
+    var down = [[38 + gx, 42 + gy], [102 + gx, 42 + gy], [70 + gx, 98 + gy]];
+    if (mode === "mono" || mode === "neg") {
+      var k = ink(mode);
+      poly(svg, up, { fill: k });
+      poly(svg, down, { fill: "none", stroke: k, "stroke-width": 4, "stroke-linejoin": "round" });
+    } else {
+      poly(svg, up, { fill: C.amarillo });
+      poly(svg, down, { fill: C.rojo });
+    }
+  }
+
+  // ---------- G: gancho de Zavadskij ----------
+  function markG(svg, mode) {
+    var k = ink(mode);
+    var base = [50, 84], l = [18, 44], r = [82, 44], l2 = [30, 12], r2 = [70, 12];
+    var g = el("g", { stroke: k, "stroke-width": 3, "stroke-linecap": "round", fill: "none" }, svg);
+    el("path", { d: "M" + l + " L" + base + " L" + r }, g);
+    el("path", { d: "M" + l + " L" + l2 + " M" + r + " L" + r2 }, g);
+    var cols = (mode === "mono" || mode === "neg") ? [k, k, k, k, k] : [C.negro, C.rojo, C.azul, C.amarillo, C.amarillo];
+    [[base, cols[0], 4.2], [l, cols[1], 3.6], [r, cols[2], 3.6], [l2, cols[3], 3.2], [r2, cols[4], 3.2]].forEach(function (d) {
+      el("circle", { cx: d[0][0], cy: d[0][1], r: d[2], fill: d[1] }, svg);
+    });
+  }
+
+  // ---------- Banda: cadena de tetraedros ----------
+  function band(svg, mode, height) {
+    var seed = 7; function rnd() { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; }
+    var cols = [C.rojo, C.amarillo, C.azul];
+    var prev = null;
+    var s = height > 100 ? 0.9 : 0.6;
+    for (var i = 0; i < 9; i++) {
+      var x = 55 + i * 100, y = height / 2 + (rnd() - 0.5) * (height * 0.45);
+      var t = tetra(svg, x, y, s, area(mode, cols[i % 3]), mode, 2.4);
+      if (prev) {
+        var from = [prev.C, prev.A, prev.B][i % 3], to = [t.B, t.A, t.D][(i + 1) % 3];
+        hollow(svg, from, to, mode, 5.5);
+        dot(svg, from, mode, 2.4); dot(svg, to, mode, 2.4);
+      }
+      prev = t;
+    }
+  }
+
+  document.querySelectorAll("svg[data-mark]").forEach(function (svg) {
+    var mode = svg.getAttribute("data-mode");
+    switch (svg.getAttribute("data-mark")) {
+      case "D": markD(svg, mode); break;
+      case "E": markE(svg, mode); break;
+      case "F": markF(svg, mode); break;
+      case "G": markG(svg, mode); break;
+      case "band": band(svg, mode, 150); break;
+      case "band-mono": band(svg, mode, 90); break;
+    }
+  });
+})();
+</script>
+</body>
+</html>
